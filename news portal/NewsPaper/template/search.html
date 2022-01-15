@@ -1,0 +1,25 @@
+
+{% extends 'default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+title
+{% endblock title %}
+{% block content %}
+<li class="nav-item">
+            <a class="nav-link" href="/news/">Назад до списка новостей</a>
+          </li>
+    <h1>Поиск новостей:</h1>
+    <hr>
+    <meta charset="UTF-8">
+<form method="get">
+    {{ filter.form.as_p }} <!-- Форму от фильтров за нас сделает django. А вот кнопку, увы придётся делать самому -->
+    <input type="submit" value="Найти"/>
+</form>
+    {% for obj in filter.qs %}
+        {{ obj.title }}
+    {% endfor %}
+
+
+
+{% endblock %}

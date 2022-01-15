@@ -1,0 +1,37 @@
+{% extends 'default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+News
+{% endblock title %}
+
+{% block content %}
+<h2>Вы действительно хотите удалить данную статью?</h2>
+<table>
+    <thead>
+            <tr>
+                <td>
+                    Заголовок
+                </td>
+                <td>
+                    Дата публикации
+                </td>
+                <td>
+                    Текст
+                </td>
+            </tr>
+    </thead>
+     <td>
+                    {{ n.title }}
+                </td>
+                <td>
+                    {{ n.time_creation }}
+                </td>
+                <td>
+                    {{ n.text |censor |truncatechars:50}}
+                </td>
+</table>
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="подтвердить"></form>
+{% endblock content %}

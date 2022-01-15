@@ -1,0 +1,15 @@
+{% extends 'default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+news
+{% endblock title %}
+
+{% block content %}
+    <h1>{{ news.title }}</h1>
+<hr>
+    <h4>{{ news.text |censor }}</h4>
+<hr>
+    <h5>{{ news.time_creation|date:'d-M-Y h:m' }}</h5>
+
+{% endblock content %}
